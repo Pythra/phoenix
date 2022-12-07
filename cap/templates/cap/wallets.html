@@ -1,0 +1,36 @@
+{% include 'cap/nav/nav.html' %}
+<style>
+    .set{ display:block; color:black;important}
+</style>
+<div class="container my-3">
+  <h5 style="display: inline-block;">My wallets </h5>
+    {% include 'cap/nav/menu.html' %}
+  
+  </div>
+  {% if user.is_authenticated %}
+  {% include 'cap/includes/cashbar.html' %}
+      {% endif %}
+      {% if wallets %}
+      <ul class="list-group my-4 p-2">
+  {% for wall in wallets %} 
+    <li class="list-group-item">
+      <h5>{{ wall }}</h5> 
+      <small> {{ wall.total }}</small><br>
+      <button class="btn btn-sm btn-success my-1">
+          Buy more
+      </button>
+      <button class="btn btn-sm btn-dark my-1">
+          Sell
+      </button>
+    </li>
+{% endfor %}
+</ul>
+  {% else %}
+  <center class="my-2">
+      <h6>
+      Your crypto wallets will be displayed here
+      </h6> 
+  </center>
+  {% endif %}
+</div>
+{% include 'cap/navicons/wall.html' %}

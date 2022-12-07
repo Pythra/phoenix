@@ -1,0 +1,75 @@
+<style>
+
+    .titbox{width:100px; border: none; height:100px;  display:inline-block; background-color:whitesmoke;
+                border-radius:50%; text-align:center; font-size:12px; margin:4px 3px 3px 3px; padding-top:22px;
+             box-shadow:3px 3px 3px grey; margin-right:10px;}
+    .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 20%;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 17px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.fa-arrow-right{color:green}
+                </style>
+{% load static %}
+    {% include 'cap/nav/nav.html' %}
+    
+<div class="container my-3">
+  <h5 style="display:inline-block">Deposit</h5>
+  {% include 'cap/nav/menu.html' %}
+  
+
+</div>
+{% include 'cap/includes/cashbar.html' %}
+    <div class="container pt-2">
+       <div class="my-3">
+    <small style="color:red" class="mt-3">
+       <b>INSTRUCTIONS TO DEPOSIT INTO YOUR WALLET</b>
+    </small>
+    </div>
+    <span style="font-size:13px;">
+        <i class="fa fa-arrow-right green mr-2"></i>Copy the bitcoin wallet address below<br>
+        <center class="my-1"> 
+            <b style="font-size: 15px;">bc1qjl2xcynhsz2tsmngt222cp0lpzgc9zakt57h4p</b>
+      <br> 
+    </center><br>
+        <i class="fa fa-arrow-right green mr-2"></i>Send BTC worth of your plan to activate your investment.
+        <br>
+    </span></div>
+    <center>   <br>
+       <small style="color:grey; font-size: 11px;">
+      Your balance will be automatically updated upon payment confirmation
+      </small><br> 
+    </center>

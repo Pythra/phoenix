@@ -1,0 +1,95 @@
+ 
+<style>
+        .green{color:green}
+        .head{color:red; font-weight:600; }
+            #loginbox{width:85%; border:1px solid whitesmoke; padding:20px 10px 20px 10px; 
+                box-shadow:inset 3px 3px 8px whitesmoke, 3px 5px 7px grey; border-radius:11px;}
+            
+            #login{border:none; border-bottom:1px solid lightgrey;padding:6px; font-size:13px}
+              #milklogin{ font-weight:600}
+{% block title %}{% endblock %}
+</style>
+{% load humanize %}
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'capping/style.css' %}">
+</head>
+<body >
+{% include 'cap/nav/nav.html' %}
+
+
+{% if user.is_authenticated %}
+
+{% if user.is_superuser %} 
+<center>
+        <a href="{% url 'admin' %}">
+                <button class="btn btn-md btn-danger mt-1">
+                        Switch to Admin Page
+                </button>
+        </a><br><small>(Only admins can see this button)</small>
+</center>
+{% endif %}
+
+    {% include 'cap/feed.html' %} 
+
+{% else %}
+{% include 'cap/nav/inslide.html' %}
+
+<a id="about">
+{% include 'cap/includes/why.html' %}
+</a>
+<div class="container mb-2" style=" ">
+    <a id="services">
+    {% include 'cap/includes/services.html' %}
+    </a>
+    
+<br> 
+        {% include 'cap/includes/get_started.html' %}<hr>
+        <center><h5 class="mt-2" id="plans">Investment Packages</h5></center> 
+        {% include 'cap/includes/plans.html' %}<br>
+        <hr>
+        {% include 'cap/includes/testimonies.html' %}
+</div>
+</div><br>
+{% include 'cap/general_post_list.html' %}
+            {% block content %} {% endblock %} 
+           
+            <h5 class="ml-3" id="sign">Create an account...</h5> 
+            
+                <center class="my-5">
+            <div id="loginbox">
+              <div class="container">
+                  <p style="position:relative; float: right;" class="mb-1">
+                      Capital<img src="{% static 'capping/phyna.svg' %}" style="height: 26px;">Finesse</span>
+                  </p> 
+         
+              <div class="my-3">
+                       
+               <a href="{% url 'signup' %}">
+                   <button class="btn btn-sm w-100 " style=" border-radius:30px;background-color:bisque; ">
+                    <b>sign up</b>
+                  </button>
+               </a>
+              </div>
+              <div class="m-1">
+                <small style="font-size: 11px;color: grey; display: block; line-height:1.3em;" id="you">
+                    Already have an account?
+                </small>
+                <a href="{% url 'login' %}">
+                 <input type="submit" class="btn btn-sm btn-dark w-100 mb-2" style="
+                 font-weight: 700; 
+                 " value="Login"><br>
+               <input type="hidden" name="next" value="{{ next }}">
+</a>
+               </div>
+               
+               </div>
+            </div>
+                </center> 
+                 
+            <br>
+</body>
+        {% include 'cap/includes/foot.html' %}
+
+
+{% endif %}
+</html>

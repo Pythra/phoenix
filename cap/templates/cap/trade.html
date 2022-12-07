@@ -1,0 +1,24 @@
+<style>
+
+.titbox{width:100px; border: none; height:100px;  display:inline-block; background-color:whitesmoke;
+            border-radius:50%; text-align:center; font-size:12px; margin:4px 3px 3px 3px; padding-top:22px;
+         box-shadow:3px 3px 3px grey; margin-right:10px;}
+         
+
+         #amt{width:50%; border-radius:40px; border:none; background-color: whitesmoke; height: 35px; padding:9px;}
+            </style>
+{% include 'cap/nav/nav.html' %}
+<div class="container my-3">
+  <h5 style="display:inline-block">Trade</h5>
+  {% include 'cap/nav/menu.html' %}
+
+</div> 
+{% include 'cap/includes/cashbar.html' %} 
+    <div class="mb-3">
+    {% include 'cap/includes/cryptos.html' %}
+  </div>
+   
+  <div class="mb-5">
+  {% include 'cap/includes/small_foot.html' %}
+  </div>
+{% include 'cap/navicons/trade_active.html' %}

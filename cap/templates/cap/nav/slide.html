@@ -1,0 +1,67 @@
+{% load humanize %}
+<style>
+  .bitbox{width:76px; border-right: 1px solid rgb(68, 59, 59); height:57px;  display:inline-block; 
+             text-align:center; font-size:11px; margin:4px 3px 3px 3px; padding:4px;; }
+  #slide-box{height:66px; width:100%; color:black;
+                      display:inline-block; overflow:scroll; 
+                      white-space:nowrap; overflow-x:scroll; overflow-y:hidden;  
+                     
+background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 229, 198));}
+ 
+#amt{width:50%; border-radius:40px; border:none; background-color: whitesmoke; height: 35px; padding:9px;}
+           </style>
+  <div id="slide-box">
+  {% for dat in coins %}
+      <div class="bitbox" data-toggle="modal" data-target="#modal{{ dat.id }}">
+      <span style="font-weight: 640;"> {{dat.name }}</span><br>
+      <b><span style="color:rgb(65, 28, 28)">$</span>{{ dat.quote.USD.price | floatformat:2 |intcomma }}</b><br>
+          {% if dat.quote.USD.percent_change_1h > 0 %}
+          <span style="color:rgb(25, 136, 25);">
+          <i class="fa fa-arrow-up"></i> {{ dat.quote.USD.percent_change_1h | floatformat:2  }}%
+          </span>
+          {% else %}
+          <span style="color:red;">
+          <i class="fa fa-arrow-down"></i> {{ dat.quote.USD.percent_change_1h | floatformat:2  }}%
+          </span>
+          {% endif %}
+      </div>
+  
+
+
+  <!-- Modal -->
+  <div class="modal fade w-80" id="modal{{ dat.id }}" tabindex="-1" role="dialog" 
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLongTitle">
+
+            {{ dat.name }} Purchase<br>
+            ${{ dat.quote.USD.price | floatformat:3 | intcomma }}
+
+          </h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <center class="modal-body w-80 pl-2 pr-2" style="font-size:14px">
+          <small>How much worth of {{ dat.name }} would you like to buy?</small> <br>
+          <form  method="POST" class="form-group mt-1" style="font-size:14px" action="{% url 'buy' %}"> 
+            {% csrf_token %}
+            <input id="amt" type="number" placeholder="Enter amount ($)" name="cash"><br>
+            <input value="{{ dat.quote.USD.price | floatformat:4 }}" name="price" hidden>
+            <input value="{{ dat.name }}" name="name" hidden>
+          
+            <input value="{{ dat.symbol }}" name="sym" hidden>
+          
+            <input class="btn btn-success btn-sm mt-2" type="submit" value="submit">
+            
+          </form>
+        </center>
+        
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+  {% include 'cap/includes/cashbar.html' %}

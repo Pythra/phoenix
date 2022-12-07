@@ -1,0 +1,29 @@
+{% load humanize %}
+<style>
+    .bitbox{width:76px; border-right: 1px solid rgb(68, 59, 59); height:57px;  display:inline-block; 
+               text-align:center; font-size:11px; margin:4px 3px 3px 3px; padding:4px;; }
+    #slide-box{height:66px; width:100%; color:black;
+                        display:inline-block; overflow:scroll; 
+                        white-space:nowrap; overflow-x:scroll; overflow-y:hidden;
+                
+  animation: slide infinite ease-in-out;        
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 219, 174));}
+    </style>
+    <div id="slide-box">
+    {% for dat in coins %}
+        <div class="bitbox">
+        <span style="font-weight: 600;">{{dat.name }}<br>
+           ${{ dat.quote.USD.price | floatformat:2 | intcomma}}<br>
+            {% if dat.quote.USD.percent_change_1h > 0 %}
+            <span style="color:rgb(25, 136, 25);">
+            <i class="fa fa-arrow-up"></i>{{ dat.quote.USD.percent_change_1h | floatformat:2  }}%
+            </span>
+            {% else %}
+            <span style="color:red;">
+            <i class="fa fa-arrow-down"></i> {{ dat.quote.USD.percent_change_1h | floatformat:2  }}%
+            </span>
+            {% endif %}</span>
+        </div>
+    {% endfor %}
+    </div>
+    
