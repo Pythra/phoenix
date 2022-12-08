@@ -316,6 +316,7 @@ def plan_detail(request):
     plan =  request.POST.get('plan')
     cost =  request.POST.get('cost')
     earn =  request.POST.get('earn')
+    bal = request.user.profile.balance
     user = Profile.objects.get(user=request.user)
     pot = float(user.pot)
     pot = pot + float(earn)
@@ -323,7 +324,7 @@ def plan_detail(request):
     user.pot = pot
     user.plan = plan
     user.save() 
-    context = {'plan':plan, 'cost':cost, 'earn':earn}
+    context = {'plan':plan, 'cost':cost, 'earn':earn, 'bal':bal}
     return render(request, 'cap/includes/plan_detail.html', context)
 
 
