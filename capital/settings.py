@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-dtt%+92*ujq)@4whorng%#96pb4c_=k^3=v$#v6$dxr$2gn3ex
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['capitalfinesse.herokuapp.com', 'localhost', 'www.capitalfinesse.com']
+ALLOWED_HOSTS = ['capitalfinesse.pythonanywhere.com', 'localhost', 'www.capitalfinesse.com']
 
 
 
@@ -68,13 +68,12 @@ WSGI_APPLICATION = 'capital.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default="sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
+    )
+}
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
