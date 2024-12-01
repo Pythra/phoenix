@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-dtt%+92*ujq)@4whorng%#96pb4c_=k^3=v$#v6$dxr$2gn3ex
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.pythra.pythonanywhere.com', 'localhost', 'www.capitalfinesse.com']
+ALLOWED_HOSTS = ['www.pythra111.pythonanywhere.com', 'localhost', 'www.capitalfinesse.com']
 
 
 
