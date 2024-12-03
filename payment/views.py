@@ -6,7 +6,7 @@ from cap.models import Profile
 
 def create_payment(request):
     # Set context with the public Stripe key and amount
-    amount = 10.00  # Example amount in dollars (you can set this dynamically from your payment logic)
+    amount = 100.00  # Example amount in dollars (you can set this dynamically from your payment logic)
     context = {
         'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY,
         'amount': amount
