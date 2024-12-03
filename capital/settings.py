@@ -1,29 +1,18 @@
 import dj_database_url
 import  os
-from pathlib import Path
+from pathlib import Path 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent 
 
+SECRET_KEY = 'django-insecure-dtt%+92*ujq)@4whorng%#96pb4c_=k^3=v$#v6$dxr$2gn3ex' 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dtt%+92*ujq)@4whorng%#96pb4c_=k^3=v$#v6$dxr$2gn3ex'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['www.pythra111.pythonanywhere.com', 'pythra111.pythonanywhere.com', 'localhost', 'www.capitalfinesse.com']
 
-
-
-# Application definition
-
 INSTALLED_APPS = [
-    'cap', 
-    'chat',
+    'cap',  
+    'payment',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,12 +52,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'capital.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-
 DATABASES = {
     'default': dj_database_url.config(
         default="sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
@@ -76,9 +59,6 @@ DATABASES = {
 }
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
-
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -94,37 +74,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
-  
-
+LANGUAGE_CODE = 'en-us' 
+TIME_ZONE = 'UTC' 
+USE_I18N = True 
+USE_TZ = True 
 LOGIN_REDIRECT_URL = 'home'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = 'static/'
-
-# The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
- 
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
- 
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+STATIC_URL = 'static/' 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STRIPE_PUBLIC_KEY = 'pk_test_51QRHPHIcFAr0rHYRlj8ol6zftlxLI4XSEJ3WOerlg4fWRfWMyHomUXbJFy5F1hXdkB2dwPqn0OKIjZvZY3TXCFMc00EfF1bAEl' 
+STRIPE_SECRET_KEY ='sk_test_51QRHPHIcFAr0rHYROhb9ySxgp6cjXgwykGLz7qprfg6OmzAezveimqoDRcAOw44Ek99Oz6f7IG5KiIFeKTBA1qUB00gfxbcj5Z'

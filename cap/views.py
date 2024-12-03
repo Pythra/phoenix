@@ -11,8 +11,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
-from django.urls import reverse, reverse_lazy
-
+from django.urls import reverse, reverse_lazy 
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views.generic import View, UpdateView, DeleteView  
 from .forms import UserRegisterForm, AnnouncementForm, PostForm, ProfileForm
@@ -21,7 +20,7 @@ from .tokens import account_activation_token
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
-from chat.models import Message
+from django.views.decorators.csrf import csrf_exempt 
 
 
 
@@ -235,6 +234,12 @@ def trade(request):
 def payment(request):
     context = {}
     return render(request, 'cap/payment.html', context)
+
+    
+def withdraw(request):
+    context = {}
+ 
+    return render(request, 'cap/withdraw.html', context)
  
 
 @login_required
