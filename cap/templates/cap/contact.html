@@ -1,14 +1,209 @@
-{% extends 'cap/base.html' %}
-{% block title %}
-{% endblock %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Eze - Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Da+2" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #f5f5f5; /* Light text */
+            margin: 0;
+            padding: 0;
+        }
 
-#loginbox{width:85%; border:1px solid whitesmoke; padding:20px 10px 20px 10px; 
-    box-shadow:inset 3px 3px 8px whitesmoke, 3px 5px 7px grey; border-radius:11px;}
-<div></div>
-    
-<h6>Eze C. Prince</h6> 
-<p>Web developer (HTML, CSS, bootstrap, react, python/django)</p>
-<p>App Developer (React native, Node.js, djangorest framework)</p>
-linkedin url: https://www.linkedin.com/in/prince-eze-39847a13b/
-{% endblock %}
+        .container {
+            max-width: 1100px;
+            margin: auto; 
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, grey, transparent);
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #f5f5f5;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #ffcc00;
+            margin: 10px 0;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #ffcc00;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: #ffcc00;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Boxed Content */
+        .box {
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            color: #f1f1f1;
+        }
+
+        ul li::before {
+            content: "•";
+            color: #ffcc00;
+            margin-right: 8px;
+        }
+
+        a {
+            color: #00bcd4; /* Light blue for links */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Decorative Slanted Background */
+        .slanted {
+            background: linear-gradient(135deg, #ffe16b, #1f1f1f);
+            padding: 20px;
+            margin: 20px 0;
+            transform: skewY(-3deg);
+            color: #121212;
+        }
+
+        .slanted-content {
+            transform: skewY(3deg);
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 15px;
+            background: #1f1f1f;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p, ul li {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <img src="{% static 'capping/me.jpeg' %}" alt="Prince Eze">
+            <h1>Prince Eze</h1>
+            <p>Web and App Developer</p>
+            <p>30 Omasi Street, Rumuomasi, Port Harcourt, Nigeria</p>
+            <p>Email: <a href="mailto:peze336@gmail.com">peze336@gmail.com</a></p>
+        </header>
+
+        <!-- Professional Summary -->
+        <section>
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="box">
+                <p>
+                    A self-taught Web and App Developer with a strong passion for coding and learning.
+                    Skilled in creating responsive websites and mobile applications from scratch with no templates.
+                    Experienced in front-end technologies (HTML, CSS, Bootstrap, React) and back-end development with PostgreSQL.
+                    Proficient in building and integrating complex systems, including e-commerce stores and mobile apps with Stripe, OpenAI API, and crypto APIs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section>
+            <h2 class="section-title">Skills</h2>
+            <ul>
+                <li>Front-end: HTML, CSS, Bootstrap, React</li>
+                <li>Back-end: PostgreSQL, Node.js, Django Rest Framework</li>
+                <li>App Development: React Native, Expo</li>
+                <li>APIs: OpenAI API, Crypto API, Stripe Payment Integration</li>
+                <li>Version Control: Git</li>
+                <li>Tools: VS Code, Postman, Docker</li>
+            </ul>
+        </section>
+
+        <!-- Decorative Slanted Background -->
+        <div class="slanted">
+            <div class="slanted-content"><h2>Self-Taught Innovator</h2> 
+                <p>“Transforming challenges into solutions with passion, diligence, and code.”</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 Prince Eze. All Rights Reserved.</p>
+            <p>My projects/links:</p>
+            <p><a href="https://github.com/Pythra">GitHub</a> | <a href="https://tinyurl.com/4twauf2t">Website</a> | <a href="https://tinyurl.com/24vs5vsw">App</a></p>
+        </footer>
+    </div>
+</body>
+</html>
