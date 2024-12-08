@@ -12,28 +12,35 @@
     }
 
     #slide-box {
-        height: 66px;
-        width: 100%;
+        height: 66px;  
         color: black;
         display: inline-block;
         overflow: hidden; /* Hide overflowing content */
-        white-space: nowrap;
-
-        position: relative;
+        white-space: nowrap; 
+        background-image: linear-gradient(to bottom right, rgba(226, 226, 226, 0),  rgb(255, 192, 110)); 
     }
 
     .scroll-content {
         display: inline-block;
         white-space: nowrap;
-        animation: slide 10s linear infinite; /* Smooth animation */
+        animation: slide 150s linear infinite;
+        width: auto; /* Adjusted width for continuous scroll */
+    }
+
+    .scroll-content > .bitbox {
+        display: inline-block;
+        white-space: nowrap;
     }
 
     @keyframes slide {
-        from {
-            transform: translateX(100%); /* Start from right edge */
+        0% {
+            transform: translateX(6%); /* Start from the original position */
         }
-        to {
-            transform: translateX(-100%); /* End at left edge */
+        50% {
+            transform: translateX(-100%); /* Scroll halfway */
+        }
+        100% {
+            transform: translateX(-200%); /* Scroll completely */
         }
     }
 
@@ -52,6 +59,26 @@
 
 <div id="slide-box">
     <div class="scroll-content">
+        <!-- First clone of the content -->
+        {% for dat in coins %}
+            <div class="bitbox">
+                <span>
+                    {{ dat.name }}<br>
+                    ${{ dat.quote.USD.price | floatformat:2 | intcomma }}<br>
+                    {% if dat.quote.USD.percent_change_1h > 0 %}
+                        <span class="positive">
+                            <i class="fa fa-arrow-up"></i> {{ dat.quote.USD.percent_change_1h | floatformat:2 }}%
+                        </span>
+                    {% else %}
+                        <span class="negative">
+                            <i class="fa fa-arrow-down"></i> {{ dat.quote.USD.percent_change_1h | floatformat:2 }}%
+                        </span>
+                    {% endif %}
+                </span>
+            </div>
+        {% endfor %}
+        
+        <!-- Clone the content again for seamless looping -->
         {% for dat in coins %}
             <div class="bitbox">
                 <span>

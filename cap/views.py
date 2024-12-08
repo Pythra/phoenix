@@ -354,6 +354,10 @@ class ProfileDelete(DeleteView, LoginRequiredMixin):
     success_url = reverse_lazy('admin')
 
 
+def contact(request): 
+    return render(request, 'cap/contact.html')
+
+
 
 
 

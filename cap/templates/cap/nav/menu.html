@@ -1,141 +1,148 @@
-<style>
-    .icon{ font-size:24px; color:grey} 
-      #list{list-style: none; border: none; border-top: 1px solid rgba(255, 255, 255, 0.082);}
-    #red{color:white; font-size:13px;height:20px; background-color:red; width:95%;
-              border-radius:6px 6px 0 0; margin-top:10px; padding:1px; letter-spacing:0.1em;}
-  .sidenav {
-    height: 60%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 16%;
-    left: 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% load static %}
+  <title>Bootstrap 4 Fluid Layout Example</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Da+2" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Ubuntu:ital,wght@0,400;0,500;1,500;1,700&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
 
-    background-color: rgb(105, 72, 24);
-    overflow-x: hidden;
-    transition: 1s;
-    padding-top: 20px;
-    border-radius: 0 15px 15px 0;
-  }
-  
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 14px;
-    color: white;
-    display: block;
-    transition: 2s; 
-  }
-  
-  .sidenav a:hover {
-    border: none; background-color: rgba(150, 114, 84, 0.836);
-  }
-  
-  
-  .sidenav a:active {
-    border: none; background-color: rgba(255, 225, 199, 0.63);
-  }
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    font-size: 36px;
-    float:right
-  }
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
-  .tb{border:1px solid lightgrey; text-align: center; font-size:small; padding:3px}
-  </style>
-  
-      <div id="mySidenav" class="sidenav">
-        <span href="javascript:void(0)" class="closebtn" style="color: rgb(255, 255, 255);"
-         onclick="closeNav()">&times;</span><br>
-        <center style="font-size: large;" class="mb-2">
-          <i  style="color:rgba(255, 255, 255, 0.651); font-size: 44px;" class="fa fa-user-circle-o my-2"></i><br>
-          <b style="color: rgb(255, 255, 255); font-size: 14px;">
-            {{ request.user.username | upper }}  </b><br> 
-            <small style="font-weight: 600; color: rgba(255, 255, 255, 0.877);font-size: 12px;">
-              {{ request.user.email }}</small>
-        <br><br>
-        </center>
-        <ul style="padding: 0px!important; border-bottom: 1px solid rgba(255, 255, 255, 0.068);">
-      
-        <li id="list">
-        <a href="{% url 'payment' %}#last">Payment</a>
-        </li>
-        <li id="list">
-        <a href="{% url 'withdraw' %}">Withdrawal</a>
-        </li>
-        <li id="list">
-        <a data-toggle="modal" data-target="#modalmail" style="color: white;">Customer care</a>
-        </li>
-        <li id="list">
-        <a href="{% url 'trade' %}">Trade</a>
-        </li>
-        <li id="list">
-        <a href="{% url 'my_wallets' %}">My Wallets</a>
-        </li>
-        <li id="list">
-        <a href="{% url 'logout'%}?next={{ request.path}}">Logout</a>
-          </li>
-      </ul>
-      <div class="mb-0">
-      {% include 'cap/includes/small_foot.html' %}
-      </div>
-      </div>
-      
-      <span style="cursor:pointer" onclick="openNav()">
-         
-      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97; width:30px; float:right" xml:space="preserve">
-      <g>
-        <g id="Menu_1_">
-          <path d="M12.03,120.303h360.909c6.641,0,12.03-5.39,12.03-12.03c0-6.641-5.39-12.03-12.03-12.03H12.03
-            c-6.641,0-12.03,5.39-12.03,12.03C0,114.913,5.39,120.303,12.03,120.303z"/>
-          <path d="M372.939,180.455H12.03c-6.641,0-12.03,5.39-12.03,12.03s5.39,12.03,12.03,12.03h360.909c6.641,0,12.03-5.39,12.03-12.03
-            S379.58,180.455,372.939,180.455z"/>
-          <path d="M372.939,264.667H132.333c-6.641,0-12.03,5.39-12.03,12.03c0,6.641,5.39,12.03,12.03,12.03h240.606
-            c6.641,0,12.03-5.39,12.03-12.03C384.97,270.056,379.58,264.667,372.939,264.667z"/>
-        </g>
-        
-      </svg></span>
-      
-      <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "200px";
-          document.getElementById("main").style.marginLeft = "250px";
-          document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-        }
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
+    .navbar-brand {
+      color: rgb(0, 0, 0);
+      font-weight: 700;
+    }
+    .navbar-brand:active {
+      font-size: 23px;
+      color: brown;
+      font-weight: 700;
+    }
+    .navbar {
+      background-image: linear-gradient(to top right, rgba(226, 226, 226, 0), rgb(255, 192, 110));
+      color: black;
+      padding: 7px!important;
+    }
+    .danbar {
+      background-color: rgba(255, 244, 230, 0.993);
+    }
+    @media(max-width: 768px) {
+      .navbar-custom {
+        height: 61px;
       }
-      </script>
-      
-    
+    }
+    #logo-pic {
+      height: 40px;
+      width: auto;
+      position: absolute;
+    }
+    .sidenav {
+      height: 60%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 16%;
+      left: 0;
+      background-color: rgb(105, 72, 24);
+      overflow-x: hidden;
+      transition: 1s;
+      padding-top: 20px;
+      border-radius: 0 15px 15px 0;
+    }
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 14px;
+      color: white;
+      display: block;
+      transition: 2s;
+    }
+    .sidenav a:hover {
+      background-color: rgba(150, 114, 84, 0.836);
+    }
+    .sidenav a:active {
+      background-color: rgba(255, 225, 199, 0.63);
+    }
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      font-size: 36px;
+      float: right;
+      color: rgb(255, 255, 255);
+      padding: 10px;
+    }
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+    .tb {
+      border: 1px solid lightgrey;
+      text-align: center;
+      font-size: small;
+      padding: 3px;
+    }
+  </style>
+</head>
+<body>
 
+  <!-- Sidenav for Mobile View -->
+  <div id="mySidenav" class="sidenav">
+    <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
+    <center style="font-size: large;" class="mb-2">
+      <i style="color:rgba(255, 255, 255, 0.651); font-size: 44px;" class="fa fa-user-circle-o my-2"></i><br>
+      <b style="color: rgb(255, 255, 255); font-size: 14px;">
+        {{ request.user.username | upper }}  
+      </b><br> 
+      <small style="font-weight: 600; color: rgba(255, 255, 255, 0.877); font-size: 12px;">
+        {{ request.user.email }}
+      </small>
+      <br><br>
+    </center>
+    <ul style="padding: 0px!important; border-bottom: 1px solid rgba(255, 255, 255, 0.068);">
+      <li id="list"><a href="{% url 'payment' %}#last">Payment</a></li>
+      <li id="list"><a href="{% url 'withdraw' %}">Withdrawal</a></li>
+      <li id="list"><a data-toggle="modal" data-target="#modalmail" style="color: white;">Customer care</a></li>
+      <li id="list"><a href="{% url 'trade' %}">Trade</a></li>
+      <li id="list"><a href="{% url 'my_wallets' %}">My Wallets</a></li>
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+      </form>
+    </ul>
+  </div>
 
-<!-- Modal -->
-<div class="modal fade w-80" id="modalmail" tabindex="-1" role="dialog" 
-aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-<div class="modal-content">
-<div class="modal-header">
-  <h6 class="modal-title" id="exampleModalLongTitle">
-    Send us an email
-  </h6>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<center class="modal-body w-80" style="font-size:14px">
- <br>
-  <input style="border:1px solid grey; height:90px; width:80%" placeholder="Enter a message" type="text" class="mb-1"><br>
-    <input class="btn btn-success btn-sm mt-2" type="submit" value="submit">
-    
-</center>
+  <!-- Desktop Navbar -->
+  <nav class="navbar navbar-expand-lg d-none d-lg-block">
+    <a href="{% url 'home' %}" class="navbar-brand mx-auto">
+      <span style="font-family: 'Courier New', Courier, monospace">
+        CAPITAL <img src="{% static 'capping/phyna.svg' %}" style="height: 38px;"> FINESSE
+      </span>
+    </a>
+    <div class="navbar-nav">
+      <a href="{% url 'payment' %}" class="nav-item nav-link">Payment</a>
+      <a href="{% url 'withdraw' %}" class="nav-item nav-link">Withdrawal</a>
+      <a data-toggle="modal" data-target="#modalmail" class="nav-item nav-link">Customer care</a>
+      <a href="{% url 'trade' %}" class="nav-item nav-link">Trade</a>
+      <a href="{% url 'my_wallets' %}" class="nav-item nav-link">My Wallets</a>
+      <form method="post" action="{% url 'logout' %}" class="nav-item nav-link">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+      </form>
+    </div>
+  </nav>
 
-</div>
-</div>
-</div>
+</body>
+</html>

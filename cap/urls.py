@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
@@ -17,6 +18,9 @@ urlpatterns = [
     path('user/settings/', views.settings, name='settings'), 
     path('capital/payment/', views.payment, name='payment'),
     path('capital/withdraw/', views.withdraw, name='withdraw'),
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    path('capital/contact/', views.contact, name='contact'),
+
     path('user/wallets/', views.wallets, name='wallets'),
     path('user/my/wallets/', views.my_wallets, name='my_wallets'), 
     path('cryptocurrency/buy/', views.buy, name='buy'),

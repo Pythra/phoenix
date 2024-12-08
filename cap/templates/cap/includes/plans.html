@@ -1,161 +1,125 @@
- <style>
-        .list-group{border:none !important;}
-        .list-group-item{border:none; border-bottom: 1px solid rgb(211, 211, 211);}
-        .pull-left {font-weight:600}
-     .pull-right{font-weight:600}
-     #pox{ padding:10px; height:auto;width:95%; background-color:rgb(255, 255, 255);
-        border: 5px solid brown; border-radius: 15px; font-size: 13px; margin-left:8px;
-   }
-     #sox{ padding:10px; height:auto;width:95%; background-color:rgb(255, 255, 255);
-        border: 5px solid rgb(148, 148, 148); border-radius: 15px; font-size: 13px; margin-left:8px;
-   }
-     #gox{ padding:10px; height:auto;width:95%; background-color:rgb(255, 255, 255);
-        border: 5px solid gold; border-radius: 15px; font-size: 13px; margin-left:8px;
-   }
-     #kox{ padding:10px; height:auto;width:95%; background-color:rgb(255, 255, 255);
-        border: 5px solid rgb(44, 156, 201); border-radius: 15px; font-size: 13px; margin-left:8px;
-   }
-   #ex{ padding:10px; height:auto;width:95%; background-color:rgb(255, 255, 255);
-        border: 5px solid red; border-radius: 15px; font-size: 13px; margin-left:8px;
-   }
-   #tex{ padding:10px; height:auto;width:95%; background-color:rgb(255, 255, 255);
-        border: 5px solid rgb(0, 0, 0);; border-radius: 15px; font-size: 13px; margin-left:8px;
-   }
-#pres{ font-weight: 600;}
-    </style>
+<style>
+    .list-group { border: none !important; }
+    .list-group-item { border: none; border-bottom: 1px solid rgb(211, 211, 211); }
+    .pull-left { font-weight: 600; }
+    .pull-right { font-weight: 600; }
+    #pox, #sox, #gox, #kox, #ex, #tex { 
+        padding: 10px; height: auto; width: 95%; background-color: rgb(255, 255, 255);
+        border-radius: 15px; font-size: 13px; margin-left: 8px; 
+    }
+    #pox { border: 5px solid brown; }
+    #sox { border: 5px solid rgb(148, 148, 148); }
+    #gox { border: 5px solid gold; }
+    #kox { border: 5px solid rgb(44, 156, 201); }
+    #ex { border: 5px solid red; }
+    #tex { border: 5px solid rgb(0, 0, 0); }
+    #pres { font-weight: 600; }
+</style>
 
-<div class="">
-
-<div class="my-4 col-lg-3" id="pox">
 <div class="row">
-    <div class="col-8"> 
-            <b style="color: brown;">BRONZE</b><br>
-            <small style="color: rgb(173, 173, 173); ">PRICE: </small><b 
-            style="color:brown; margin-right:1px ;">$300</b>  <br>
-            <small style="color: rgb(173, 173, 173);">DURATION: </small><b 
-            style="color: brown;">30 days</b>
-            
+    <!-- BRONZE PLAN -->
+    <div class="my-4 col-lg-3" id="pox">
+        <div class="row">
+            <div class="col-8">
+                <b style="color: brown;">BRONZE</b><br>
+                <small style="color: rgb(173, 173, 173);">PRICE: </small><b style="color:brown; margin-right:1px;">$300</b><br>
+                <small style="color: rgb(173, 173, 173);">DURATION: </small><b style="color: brown;">30 days</b>
+            </div>
+            <div class="col-4">
+                <form method="POST" action="{% url 'plan_detail' %}">
+                    {% csrf_token %}
+                    <input name="plan" value="bronze" hidden>
+                    <input name="cost" value="50" hidden>
+                    <input name="earn" value="100" hidden>
+                    <input name="time" value="1" hidden>
+                    <button class="btn btn-sm btn-danger mt-1" style="font-weight: bold; color: white; padding: 0 3px !important;">
+                        <small><b>PURCHASE</b></small>
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class="col-4">
-            <form method="POST" action="{% url 'plan_detail' %}">
-                {% csrf_token %}
-                <input name="plan" value="bronze" hidden>
-                <input name="cost" value="50" hidden>
-                <input name="earn" value="100" hidden>
-                <input name="time" value="1" hidden>
-            <button class="btn btn-sm btn-danger mt-1" style="font-weight:BOLD; color: white; 
-             padding: 0 3px 0 3px !important;"> 
-                <small><b>PURCHASE</b></small> 
-            </button>
-        </form> 
-</div></div><hr style="padding: 3px !important;margin:5px 0 5px 0 !important;">
-<center>
-            <ul class="list-group m-1"> 
+        <hr style="padding: 3px !important; margin: 5px 0 5px 0 !important;">
+        <center>
+            <ul class="list-group m-1">
                 <li class="list-group-item p-0 pr-2 pl-2 m-1">
                     <small>
-                        <span class="pull-left">
-                            Monthly ROI
-                        </span>
-                        <span class="pull-right">
-                            $500.00
-                        </span>
+                        <span class="pull-left">Monthly ROI</span>
+                        <span class="pull-right">$500.00</span>
                     </small>
-
-                </li> 
+                </li>
             </ul>
+        </center>
     </div>
-</center>
 
-
-
-
-<div class="my-4 col-lg-3" id="sox">
-    <div class="row">
-        <div class="col-8"> 
-                <b style="color:grey;">SILVER</b><br>
-                
-                <small style="color: rgb(173, 173, 173); ">PRICE: </small><b 
-                style="color: grey; margin-right:1px ;">$600</b>   <br>
-                <small style="color: rgb(173, 173, 173);">DURATION: </small><b 
-                style="color: grey;">30 days</b>
-                
+    <!-- SILVER PLAN -->
+    <div class="my-4 col-lg-3 mx-auto" id="sox">
+        <div class="row">
+            <div class="col-8">
+                <b style="color: rgb(148, 148, 148);">SILVER</b><br>
+                <small style="color: rgb(173, 173, 173);">PRICE: </small><b style="color: rgb(148, 148, 148); margin-right:1px;">$500</b><br>
+                <small style="color: rgb(173, 173, 173);">DURATION: </small><b style="color: rgb(148, 148, 148);">60 days</b>
             </div>
             <div class="col-4">
                 <form method="POST" action="{% url 'plan_detail' %}">
                     {% csrf_token %}
                     <input name="plan" value="silver" hidden>
                     <input name="cost" value="100" hidden>
-                    <input name="earn" value="190" hidden>
-                    <input name="time" value="1" hidden>
-                    <button class="btn btn-sm btn-secondary mt-1" 
-                    style="font-weight:BOLD;  padding: 0 3px 0 3px !important;">
+                    <input name="earn" value="200" hidden>
+                    <input name="time" value="2" hidden>
+                    <button class="btn btn-sm btn-danger mt-1" style="font-weight: bold; color: white; padding: 0 3px !important;">
                         <small><b>PURCHASE</b></small>
                     </button>
-            </form> 
-    </div></div><hr style="padding: 3px !important;margin:5px 0 5px 0 !important;">
-    <center>
-                <ul class="list-group m-1"> 
-                    <li class="list-group-item p-0 pr-2 pl-2 mt-1 mb-1">
-                        <small>
-                            <span class="pull-left">
-                                Monthly ROI
-                            </span>
-                            <span class="pull-right">
-                                $1000.00
-                            </span>
-                        </small>
-    
-                    </li> 
-                </ul>
+                </form>
+            </div>
         </div>
-    </center>
+        <hr style="padding: 3px !important; margin: 5px 0 5px 0 !important;">
+        <center>
+            <ul class="list-group m-1">
+                <li class="list-group-item p-0 pr-2 pl-2 m-1">
+                    <small>
+                        <span class="pull-left">Monthly ROI</span>
+                        <span class="pull-right">$800.00</span>
+                    </small>
+                </li>
+            </ul>
+        </center>
+    </div>
 
-    
-
-<div class="my-4 col-lg-3" id="gox">
-    <div class="row">
-        <div class="col-8"> 
-                <b style="color: blue;">GOLD</b><br>
-                
-                <small style="color: blue ">PRICE: </small><b 
-                style="color:blue; margin-right:1px ;">$1000</b>   <br>
-                <small style="color: blue;">DURATION: </small><b 
-                style="color: rgb(2, 2, 255);">30 days</b>
-                
+    <!-- GOLD PLAN -->
+    <div class="my-4 col-lg-3" id="gox">
+        <div class="row">
+            <div class="col-8">
+                <b style="color: gold;">GOLD</b><br>
+                <small style="color: rgb(173, 173, 173);">PRICE: </small><b style="color: gold; margin-right:1px;">$800</b><br>
+                <small style="color: rgb(173, 173, 173);">DURATION: </small><b style="color: gold;">90 days</b>
             </div>
             <div class="col-4">
                 <form method="POST" action="{% url 'plan_detail' %}">
                     {% csrf_token %}
                     <input name="plan" value="gold" hidden>
-                    <input name="cost" value="300" hidden>
-                    <input name="earn" value="250" hidden>
+                    <input name="cost" value="150" hidden>
+                    <input name="earn" value="300" hidden>
                     <input name="time" value="3" hidden>
-                   
-                <button class="btn btn-sm btn-primary mt-1" 
-                style="font-weight:bold; padding: 0 3px 0 3px !important;">
-                    <small><b>PURCHASE</b></small>
-                </button>
-            </form> 
-            </div></div><hr style="padding: 3px !important;margin:5px 0 5px 0 !important;">
-    <center>
-                <ul class="list-group m-1">
-                    <li class="list-group-item p-0 pr-2 pl-2 mt-1 mb-1">
-                        <small>
-                            <span class="pull-left">
-                                Monthly ROI
-                            </span>
-                            <span class="pull-right">
-                                $1500
-                            </span>
-                        </small>
-    
-                    </li> 
-                </ul>
+                    <button class="btn btn-sm btn-danger mt-1" style="font-weight: bold; color: white; padding: 0 3px !important;">
+                        <small><b>PURCHASE</b></small>
+                    </button>
+                </form>
+            </div>
         </div>
+        <hr style="padding: 3px !important; margin: 5px 0 5px 0 !important;">
+        <center>
+            <ul class="list-group m-1">
+                <li class="list-group-item p-0 pr-2 pl-2 m-1">
+                    <small>
+                        <span class="pull-left">Monthly ROI</span>
+                        <span class="pull-right">$1200.00</span>
+                    </small>
+                </li>
+            </ul>
+        </center>
+    </div>    
 
-    
-
-        <div class="my-4" id="kox">
+        <div class="my-4 col-lg-3" id="kox">
             <div class="row">
                 <div class="col-8"> 
                         <b style="color: rgb(44, 156, 201);">PLATINUM</b><br>
@@ -196,7 +160,7 @@
                         </ul>
                 </div>
                 
-        <div class="my-4" id="tex">
+        <div class="my-4 col-lg-3 mx-auto" id="tex">
             <div class="row">
                 <div class="col-8"> 
                         <b style="color:black">ENTERPRENEUR</b><br>
@@ -239,7 +203,7 @@
 
                 
 
-        <div class="my-4" id="ex">
+        <div class="my-4 col-lg-3" id="ex">
             <div class="row">
                 <div class="col-8"> 
                         <b style="color:red;">TYCOON</b><br>
